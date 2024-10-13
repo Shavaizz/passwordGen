@@ -3,12 +3,15 @@ export default function Header(){
         <>
             <section className="logoAndHeader">
                 <div id="logo">
-                    <h2>
+                    <h1> 
                         Password Generator
-                    </h2>
+                    </h1>
                 </div>
                 <div id="headerlink">
-                    <p><a href="github.com/Shavaizz">See More Projects</a></p>
+                <a id="linkwrapper" href="https://github.com/Shavaizz">
+                    <img id="githubico" src="public\github-mark-white.png" alt="" />
+                    <p >See More Projects</p>
+                </a>
                 </div>
             </section>
         </>

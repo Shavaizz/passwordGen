@@ -20,22 +20,24 @@ export default function Passwordgenblock(){
         return password; 
       }return(
         <>
-
-        <section id="textPortion">
-            Press the respective buttons below to generate a new password or to clear the password
-            <p id="genPassString">Generated Password: {password}</p>
-        </section>
-        <section id="logicPortion">
-            <input 
-            type="number" 
-            onChange={handlevaluechange} 
-            name="Length" id="passwordLengthInput" 
-            value={valuestring}
-            />
-            <button type="button" onClick={passwordGeneratorFunction}>Generate Password</button>
-            <button type="button"onClick={()=> setPassword("")}>Clear Password</button>
-            <p id="lengthset">{valuestring}</p> 
-        </section>
+        <div className="passWrapper">
+          <section id="textPortion">
+              <p>Press the respective buttons below to generate a new password or to clear the password</p> 
+              <p id="genPassString">Generated Password: {password}</p>
+          </section>
+          <section id="logicPortion">
+              <input 
+              type="text" //Changed from number to text to remove the up/down scrolls for a better design
+              onChange={handlevaluechange} 
+              name="Length" id="passwordLengthInput" 
+              value={valuestring}
+              />
+            <div className="buttonWrapperLogic">
+              <button type="button" onClick={passwordGeneratorFunction}>Generate Password</button>
+              <button type="button"onClick={()=> setPassword("")}>Clear Password</button>
+            </div>
+          </section>
+        </div>
         </>
     )
 }
