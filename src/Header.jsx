@@ -9,7 +9,7 @@ export default function Header(){
                 </div>
                 <div id="headerlink">
                 <a id="linkwrapper" href="https://github.com/Shavaizz">
-                    <img id="githubico" src="public\github-mark-white.png" alt="" />
+                    <img id="githubico" src="/github-mark-white.png" alt="" />
                     <p >See More Projects</p>
                 </a>
                 </div>

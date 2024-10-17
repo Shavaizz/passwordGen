@@ -1,7 +1,10 @@
-import { useState } from "react"
+import { useState, useCallback } from "react"
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+
 export default function Passwordgenblock(){
-    const [password, setPassword] = useState()
-    const [valuestring, setValuestring] = useState(0)
+    const [password, setPassword] = useState("")
+    const [valuestring, setValuestring] = useState(10)
+    const [copied, setCopied] = useState(false);
     function passwordGeneratorFunction() {
         const newPass = randomStringGen(valuestring); 
         setPassword(newPass); 
@@ -9,7 +12,10 @@ export default function Passwordgenblock(){
     function handlevaluechange(event){
         setValuestring(Number(event.target.value))
     }
-    
+    const onCopy = useCallback(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 3000); // Reset after 1.5 seconds
+    }, [])
       function randomStringGen(length) {
         const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-=+[]/.,~`";
         let password = "";
@@ -27,11 +33,16 @@ export default function Passwordgenblock(){
           </section>
           <section id="logicPortion">
               <input 
-              type="text" //Changed from number to text to remove the up/down scrolls for a better design
+              type="number" //Changed from number to text to remove the up/down scrolls for a better design
               onChange={handlevaluechange} 
               name="Length" id="passwordLengthInput" 
               value={valuestring}
+              min="1"
               />
+        <CopyToClipboard onCopy={onCopy} text={password}>
+          <button>Copy To Clipboard</button>
+        </CopyToClipboard>
+        {copied && <span id="copyText">Copied!</span>}
             <div className="buttonWrapperLogic">
               <button type="button" onClick={passwordGeneratorFunction}>Generate Password</button>
               <button type="button"onClick={()=> setPassword("")}>Clear Password</button>
